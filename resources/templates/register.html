@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <form method="POST" id="insertForm" action="/save">
+    <h3>Insert registration</h3>
+    {% csrf-field %}
+    <table>
+      <tr>
+        <td>
+          Date of registration:
+        </td>
+        <td>
+          <input type="date"
+                 placeholder="dd/mm/yyyy"
+                 name="date_in"
+                 value="{{date_in}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Deposit:
+        </td>
+        <td>
+          <input type="text"
+                 name="deposit"
+                 value="{{deposit}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Instalment:
+        </td>
+        <td>
+          <input type="text"
+                 name="instalment"
+                 value="{{instalment}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Balance:
+        </td>
+        <td>
+          <input type="text"
+                 name="balance"
+                 value="{{balance}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Course:
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Modules:
+        </td>
+        <td>
+          <input type="number"
+                 name="modules"
+                 value="{{modules}}">
+        </td>
+      </tr>
+    </table>
+    <input type="submit" value="save" />
+  </form>
+</div>
+{% endblock %}

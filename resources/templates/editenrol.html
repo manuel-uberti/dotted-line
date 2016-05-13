@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block content %}
+{% for item in enrolments %}
+<div class="row">
+  <h3>{{item.first_name}} {{item.last_name}} enrolments</h3>
+  <form method="POST" id="enrolForm{{item.id}}"" action="/saveenrol">
+    {% csrf-field %}
+    <input type="hidden" name="id_customer" value="{{item.id_customer}}" />
+    <input type="hidden" name="id" value="{{item.id}}" />
+    <table>
+      <tr>
+        <td>
+          Enrolment Date:
+        </td>
+        <td>
+          <input type="date"
+                 placeholder="dd/mm/yyyy"
+                 name="date_in"
+                 value="{{item.date_in|date:dd/MM/yyyy}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Balance:
+        </td>
+        <td>
+          <input type="text"
+                 name="balance"
+                 value="{{item.balance}}"> €
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Deposit:
+        </td>
+        <td>
+          <input type="text"
+                 name="deposit"
+                 value="{{item.deposit}}"> €
+        </td>
+        <td>
+          Desposit Date:
+        </td>
+        <td>
+          <input type="date"
+                 placeholder="dd/mm/yyyy"
+                 name="date_deposit"
+                 value="{{item.date_deposit|date:dd/MM/yyyy}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Instalment 1:
+        </td>
+        <td>
+          <input type="text"
+                 name="instalment_1"
+                 value="{{item.instalment_1}}"> €
+        </td>
+        <td>
+          Instalment 1 Date:
+          <input type="date"
+                 placeholder="dd/mm/yyyy"
+                 name="date_instalment_1"
+                 value="{{item.date_instalment_1|date:dd/MM/yyyy}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Instalment 2:
+        </td>
+        <td>
+          <input type="text"
+                 name="instalment_2"
+                 value="{{item.instalment_2}}"> €
+        </td>
+        <td>
+          Instalment 2 Date:
+          <input type="date"
+                 placeholder="dd/mm/yyyy"
+                 name="date_instalment_2"
+                 value="{{item.date_instalment_2|date:dd/MM/yyyy}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Instalment 3:
+        </td>
+        <td>
+          <input type="text"
+                 name="instalment_3"
+                 value="{{item.instalment_3}}"> €
+        </td>
+        <td>
+          Instalment 3 Date:
+          <input type="date"
+                 placeholder="dd/mm/yyyy"
+                 name="date_instalment_3"
+                 value="{{item.date_instalment_3|date:dd/MM/yyyy}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Course:
+        </td>
+        <td>
+          <select form="enrolForm{{item.id}}""
+                  name="course">
+            {% for option in courses %}
+            <option value="{{option.id}}"
+                    {% ifequal item.id_courses option.id %}
+                    selected
+                    {% endifequal %}>
+              {{option.title}}
+            </option>
+            {% endfor %}
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Modules:
+        </td>
+        <td>
+          1 <input type="checkbox" name="one" {% if item.module_1 %}checked{% endif %}>
+          2 <input type="checkbox" name="two" {% if item.module_2 %}checked{% endif %}>
+          3 <input type="checkbox" name="three" {% if item.module_3 %}checked{% endif %}>
+        </td>
+      </tr>
+    </table>
+    <input type="submit" class="btn btn-primary" value="save" />
+  </form>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <h3>Customers</h3>
+  <table class="customers">
+    <tr>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+    </tr>
+    {% for item in customers %}
+    <tr>
+      <td>{{item.last_name}}</td>
+      <td>{{item.first_name}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.phone}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+</div>
+{% endblock %}

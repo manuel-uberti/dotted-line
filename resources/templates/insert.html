@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <form method="POST" id="insertForm" action="/save">
+    <h3>Insert customer</h3>
+    {% csrf-field %}
+    <table>
+      <tr>
+        <td>
+          First Name:
+        </td>
+        <td>
+          <input type="text"
+                 name="first_name"
+                 value="{{first_name}}" />
+        </td>
+        <td>
+          Last Name:
+        </td>
+        <td>
+          <input type="text"
+                 name="last_name"
+                 value="{{last_name}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Date of Birth:
+        </td>
+        <td>
+          <input type="date"
+                 placeholder="dd/mm/yyyy"
+                 name="date_of_birth"
+                 value="{{date_of_birth}}" />
+        </td>
+        <td>
+          Place of Birth:
+        </td>
+        <td>
+          <input type="text"
+                 name="place_of_birth"
+                 value="{{place_of_birth}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Fiscal Code:
+        </td>
+        <td>
+          <input type="text"
+                 name="fiscal_code"
+                 value="{{fiscal_code}}">
+        </td>
+        <td>
+          VAT Number:
+        </td>
+        <td>
+          <input type="text"
+                 name="vat_number"
+                 value="{{vat_number}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Address:
+        </td>
+        <td>
+          <input type="text"
+                 name="address"
+                 value="{{address}}">
+        </td>
+        <td>
+          City:
+        </td>
+        <td>
+          <input type="text"
+                 name="city"
+                 value="{{city}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Postal Code:
+        </td>
+        <td>
+          <input type="text"
+                 name="postal_code"
+                 value="{{postal_code}}">
+        </td>
+        <td>
+          Province:
+        </td>
+        <td>
+          <input type="text"
+                 name="province"
+                 value="{{province}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Email:
+        </td>
+        <td>
+          <input type="text"
+                 name="email"
+                 value="{{email}}" />
+        </td>
+        <td>
+          Phone:
+        </td>
+        <td>
+          <input type="text"
+                 name="phone"
+                 value="{{phone}}">
+        </td>
+      </tr>
+    </table>
+    <p>
+      Notes:<br/>
+      <textarea id="notes"
+                cols="86" rows ="10"
+                name="notes"
+                form="insertForm">
+      </textarea>
+    </p>
+    </table>
+    <input type="submit" value="save" />
+  </form>
+  {% if errors %}
+  <ul class="validation">
+    {% if errors.first_name %}
+    <li>First name must be present</li>
+    {% endif %}
+    {% if errors.last_name %}
+    <li>Last name must be present</li>
+    {% endif %}
+    {% if errors.date_of_birth %}
+    <li>Date of Birth must be dd/mm/yyyy</li>
+    {% endif %}
+    {% if errors.email %}
+    <li>Email must be a valid email address</li>
+    {% endif %}
+  </ul>
+  {% endif %}
+</div>
+{% endblock %}

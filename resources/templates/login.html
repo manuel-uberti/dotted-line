@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Login</h3>
+<div class="row">
+  <div class="span12">
+    <form method="POST" action="/login"">
+      {% csrf-field %}
+      <p>
+      <input class="form-control"
+             type="text"
+             placeholder="Username:"
+             name="username"
+             value="{{username}}" />
+      </p>
+      <p>
+        <input class="form-control"
+               type="password"
+               placeholder="Password:"
+               name="password"
+               value="{{password}}"/>
+      </p>
+      <input type="submit" value="login" />
+    </form>
+  </div>
+</div>
+{% endblock %}

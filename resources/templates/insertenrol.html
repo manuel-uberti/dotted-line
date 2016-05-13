@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% block content %}
+{% for customer in customers %}
+<div class="row">
+  <h3>Insert enrolment for {{customer.first_name}} {{customer.last_name}}</h3>
+  <form method="POST" id="enrolForm{{id}}"" action="/doinsertenr">
+    {% csrf-field %}
+    <input type="hidden" name="id_customer" value="{{customer.id_customer}}" />
+    <input type="hidden" name="id" value="{{id}}" />
+    <table>
+      <tr>
+        <td>
+          Enrolment Date:
+        </td>
+        <td>
+          <input type="date"
+                 placeholder="dd/mm/yyyy"
+                 name="date_in"
+                 value="{{date_in|date:dd/MM/yyyy}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Balance:
+        </td>
+        <td>
+          <input type="text"
+                 name="balance"
+                 value="{{balance}}"> €
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Deposit:
+        </td>
+        <td>
+          <input type="text"
+                 name="deposit"
+                 value="{{deposit}}"> €
+        </td>
+        <td>
+          Desposit Date:
+        </td>
+        <td>
+          <input type="date"
+                 placeholder="dd/mm/yyyy"
+                 name="date_deposit"
+                 value="{{date_deposit|date:dd/MM/yyyy}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Instalment 1:
+        </td>
+        <td>
+          <input type="text"
+                 name="instalment_1"
+                 value="{{instalment_1}}"> €
+        </td>
+        <td>
+          Instalment 1 Date:
+          <input type="date"
+                 placeholder="dd/mm/yyyy"
+                 name="date_instalment_1"
+                 value="{{date_instalment_1|date:dd/MM/yyyy}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Instalment 2:
+        </td>
+        <td>
+          <input type="text"
+                 name="instalment_2"
+                 value="{{instalment_2}}"> €
+        </td>
+        <td>
+          Instalment 2 Date:
+          <input type="date"
+                 placeholder="dd/mm/yyyy"
+                 name="date_instalment_2"
+                 value="{{date_instalment_2|date:dd/MM/yyyy}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Instalment 3:
+        </td>
+        <td>
+          <input type="text"
+                 name="instalment_3"
+                 value="{{instalment_3}}"> €
+        </td>
+        <td>
+          Instalment 3 Date:
+          <input type="date"
+                 placeholder="dd/mm/yyyy"
+                 name="date_instalment_3"
+                 value="{{date_instalment_3|date:dd/MM/yyyy}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Course:
+        </td>
+        <td>
+          <select form="enrolForm{{id}}""
+                  name="course">
+            {% for option in courses %}
+            <option value="{{option.id}}" >
+              {{option.title}}
+            </option>
+            {% endfor %}
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Modules:
+        </td>
+        <td>
+          1 <input type="checkbox" name="one" >
+          2 <input type="checkbox" name="two" >
+          3 <input type="checkbox" name="three" >
+        </td>
+      </tr>
+    </table>
+    <input type="submit" class="btn btn-primary" value="insert" />
+  </form>
+</div>
+{% endfor %}
+{% endblock %}

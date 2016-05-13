@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+{% for item in customers %}
+<h3>Confirm deletion of {{item.first_name}} {{item.last_name}}</h3>
+<div class="row">
+  <div class="span12">
+    <form method="POST" action="/dodelete">
+      {% csrf-field %}
+      <input type="hidden" name="id" value="{{item.id}}" />
+      <p>
+        Are you sure you want to delete {{item.first_name}} {{item.last_name}} record?
+      </p>
+      <input type="submit" class="btn btn-primary" value="delete" />
+    </form>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

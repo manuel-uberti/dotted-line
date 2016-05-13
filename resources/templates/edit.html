@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block content %}
+{% for item in customers %}
+<div class="row">
+  <h3>{{item.first_name}} {{item.last_name}}</h3>
+  <form method="POST" id="updateForm" action="/update">
+    {% csrf-field %}
+    <input type="hidden" name="id" value="{{item.id}}" />
+    <table>
+      <tr>
+        <td>
+          First Name:
+        </td>
+        <td>
+          <input type="text"
+                 name="first_name"
+                 value="{{item.first_name}}" />
+        </td>
+        <td>
+          Last Name:
+        </td>
+        <td>
+          <input type="text"
+                 name="last_name"
+                 value="{{item.last_name}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Date of Birth:
+        </td>
+        <td>
+          <input type="date"
+                 placeholder="dd/mm/yyyy"
+                 name="date_of_birth"
+                 value="{{item.date_of_birth|date:dd/MM/yyyy}}" />
+        </td>
+        <td>
+          Place of Birth:
+        </td>
+        <td>
+          <input type="text"
+                 name="place_of_birth"
+                 value="{{item.place_of_birth}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Fiscal Code:
+        </td>
+        <td>
+          <input type="text"
+                 name="fiscal_code"
+                 value="{{item.fiscal_code}}">
+        </td>
+        <td>
+          VAT Number:
+        </td>
+        <td>
+          <input type="text"
+                 name="vat_number"
+                 value="{{item.vat_number}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Address:
+        </td>
+        <td>
+          <input type="text"
+                 name="address"
+                 value="{{item.address}}">
+        </td>
+        <td>
+          City:
+        </td>
+        <td>
+          <input type="text"
+                 name="city"
+                 value="{{item.city}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Postal Code:
+        </td>
+        <td>
+          <input type="text"
+                 name="postal_code"
+                 value="{{item.postal_code}}">
+        </td>
+        <td>
+          Province:
+        </td>
+        <td>
+          <input type="text"
+                 name="province"
+                 value="{{item.province}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Email:
+        </td>
+        <td>
+          <input type="text"
+                 name="email"
+                 value="{{item.email}}" />
+        </td>
+        <td>
+          Phone:
+        </td>
+        <td>
+          <input type="text"
+                 name="phone"
+                 value="{{item.phone}}">
+        </td>
+      </tr>
+    </table>
+    <p>
+      Notes:<br/>
+      <textarea id="notes" cols="86" rows ="10"
+                name="notes" form="updateForm">{{item.notes}}</textarea>
+    </p>
+    <input type="submit" class="btn btn-primary" value="update" />
+  </form>
+  <br/>
+  <hr/>
+  <br/>
+  <form method="POST" action="/delete">
+    {% csrf-field %}
+    <input type="hidden" name="id_customer" value="{{item.id}}" />
+    <p>
+      Do you want to <strong>delete</strong> {{item.first_name}} {{item.last_name}} record?
+    </p>
+    <input type="submit" class="btn btn-primary" value="delete" />
+  </form>
+</div>
+{% endfor %}
+{% endblock %}
