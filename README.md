@@ -7,7 +7,7 @@ It is based on Luminus version `2.9.10.36` and it works with a PostgreSQL
 database.
 
 ## Screenshot
-![Screenshot](https://github.com/manuel-uberti/dotted-line/dotted-line.png)
+![Screenshot](https://github.com/manuel-uberti/dotted-line/blob/master/dotted-line.png)
 
 ## License
 
