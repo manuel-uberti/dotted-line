@@ -1,7 +1,7 @@
 (defproject dotted-line "0.1.0-SNAPSHOT"
 
   :description "dotted-line: Boccaperta Management System"
-  :url "http://example.com/FIXME"
+  :url "https://github.com/manuel-uberti/dotted-line"
 
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [selmer "1.0.4"]
@@ -43,7 +43,8 @@
 
   :plugins [[lein-cprop "1.0.1"]
             [migratus-lein "0.2.6"]
-            [lein-environ "1.0.0"]]
+            [lein-environ "1.0.0"]
+            [lein-ancient "0.6.10"]]
   :target-path "target/%s/"
   :profiles
   {:uberjar {:omit-source true
