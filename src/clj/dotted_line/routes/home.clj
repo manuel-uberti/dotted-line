@@ -8,7 +8,8 @@
             [ring.util.http-response :as hresponse]
             [ring.util.response :refer [response redirect content-type]]
             [clojure.java.io :as io]
-            [clojure.string :as s]))
+            [clojure.string :as s]
+            [clojure.spec :as spec]))
 
 ;;; Validations
 (def custom-formatter (f/formatter "ddMMyyyy"))
